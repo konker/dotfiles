@@ -1,0 +1,12 @@
+[user]
+	name = konker
+	email = konker@gmail.com
+[color]
+	status = true
+	branch = true
+	diff = true
+[github]
+	user = konker
+	token = beedfd456381cd9703ee3a132b7215af
+[alias]
+	co = checkout
