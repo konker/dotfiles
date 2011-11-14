@@ -1,0 +1,15 @@
+#!/bin/bash
+
+f=.tags
+path=$(pwd)
+while [[ 1 ]]; do
+    if [[ "$path" != "" && -e "$path/$f" ]]; then
+        #echo "$path/$f"
+        ctags -R --file-scope=no -f $path/$f $path/*
+        exit 0
+    elif [[ "$path" == "" ]]; then
+        exit 1
+    else
+        path=${path%/*}
+    fi
+done

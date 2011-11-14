@@ -35,8 +35,13 @@ set dir=~/vim.swap
 set guioptions-=T 
 " :set guioptions-=m 
 
+" switch on tags and specify tags file.
+" ; at the end means the search will traverse up the directory tree
 filetype plugin on
 set tags=./.tags;
+
+" gentags shell script should be in your path
+call system("gentags")
 
 "set guifont=Inconsolata:h15
 
