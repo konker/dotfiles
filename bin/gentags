@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# traverse up the directory tree starting from the working directory
+# until a .tags file is found. If found re-generate it.
+# NOTE: you must generate the .tags file manually the first time.
 f=.tags
 path=$(pwd)
 while [[ 1 ]]; do
