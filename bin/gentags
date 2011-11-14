@@ -1,10 +1,25 @@
 #!/bin/bash
 
-# traverse up the directory tree starting from the working directory
-# until a .tags file is found. If found re-generate it.
-# NOTE: you must generate the .tags file manually the first time.
 f=.tags
 path=$(pwd)
+
+# -n switch creates new .tags tag file in the current directory.
+# Run once per project.
+while getopts ":n" opt; do
+    case $opt in
+        n)
+            ctags -R --file-scope=no -f $f *
+            exit 0
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+            ;;
+    esac
+done
+
+# Searches up the directory tree for a .tags file.
+# If found, regenerates the tag file.
 while [[ 1 ]]; do
     if [[ "$path" != "" && -e "$path/$f" ]]; then
         #echo "$path/$f"

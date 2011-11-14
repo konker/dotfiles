@@ -41,7 +41,7 @@ filetype plugin on
 set tags=./.tags;
 
 " gentags shell script should be in your path
-call system("gentags")
+call system("~/bin/gentags")
 
 "set guifont=Inconsolata:h15
 
