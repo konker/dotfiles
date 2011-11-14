@@ -30,12 +30,15 @@ set sw=4
 set expandtab
 set eol "unix"
 
-set dir=~/Library/vim.swap
+set dir=~/vim.swap
 
-:set guioptions-=T 
+set guioptions-=T 
 " :set guioptions-=m 
 
-set guifont=Inconsolata:h15
+filetype plugin on
+set tags=./.tags;
+
+"set guifont=Inconsolata:h15
 
 " search incrementally
 set incsearch
