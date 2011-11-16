@@ -36,16 +36,22 @@ set backupdir=~/vim.backup
 
 " Remove toolbar and set font
 set guioptions-=T 
-set guifont=Andale_Mono:h13
-
-" switch on tags and specify tags file.
-" ; at the end means the search will traverse up the directory tree
-filetype plugin on
-set tags=./.tags;
+if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+elseif has("gui_macvim")
+    set guifont=Inconsolata:h12
+elseif has("gui_win32")
+    set guifont=Inconsolata:h12
+end
 
 " gentags shell script called before starting vim
 " see http://github.com/konker/rcfiles
 call system("~/bin/gentags")
+
+" switch on tags and specify tags file.
+" ; at the end means the search will traverse up the directory tree
+filetype plugin on
+set tags=.tags;/
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
