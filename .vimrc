@@ -6,6 +6,7 @@
 " ============================================================================
 set nocompatible
 filetype off
+let $GIT_SSL_NO_VERIFY = 'true'
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
