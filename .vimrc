@@ -85,8 +85,8 @@ highlight ExtraWhitespace ctermbg=lightgreen guibg=lightgreen
 
 set showmatch  " Show matching brackets.
 set matchtime=2 " How many tenths of a second to blink
-set novisualbell  " No blinking
-set noerrorbells  " No noise.
+" no noise or blinking
+set noerrorbells visualbell t_vb=
 set listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable chars mapping
 
 " gui options
