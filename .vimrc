@@ -6,6 +6,7 @@
 " ============================================================================
 set nocompatible
 filetype off
+let $GIT_SSL_NO_VERIFY = 'true'
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -52,6 +53,7 @@ set smarttab
 set expandtab
 set wrap
 set textwidth=0
+set tildeop
 
 set formatoptions-=o " Do not automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
 set formatoptions-=r " Do not automatically insert a comment leader after an enter
@@ -106,7 +108,7 @@ end
 set nowritebackup
 set nobackup
 set directory=/tmp// " prepend(^=) $HOME/.tmp/ to default path; use full path as backup filename(//)
-
+set hidden
 
 " Behaviour
 " ============================================================================ 
