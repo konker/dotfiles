@@ -29,6 +29,7 @@ Bundle 'Python-Syntax'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'pangloss/vim-javascript'
 Bundle 'leshill/vim-json'
+Bundle 'VimOrganizer'
 
 
 " plugin configs
