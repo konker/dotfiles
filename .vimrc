@@ -77,7 +77,13 @@ endif
 " Colour and UI
 " ============================================================================ 
 set background=dark
-colorscheme jellybeans
+
+try
+    colorscheme jellybeans
+catch /./
+    " ignore
+endtry
+
 set t_Co=256
 set ruler
 set nonumber
