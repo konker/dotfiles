@@ -56,6 +56,7 @@ set wrap
 set textwidth=0
 set tildeop
 
+set formatoptions-=c
 set formatoptions-=o " Do not automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
 set formatoptions-=r " Do not automatically insert a comment leader after an enter
 set formatoptions-=t " Do no auto-wrap text using textwidth (does not apply to comments)
@@ -127,7 +128,6 @@ set cf                 " Enable error files & error jumping.
 set clipboard+=unnamed " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
 set timeoutlen=350     " Time to wait for a command (after leader for example)
-set formatoptions=crql
 
 set foldenable " Turn on folding
 set foldmethod=marker " Fold on the marker
@@ -159,9 +159,6 @@ set tags=.tags;/
 " ============================================================================ 
 if has("autocmd")
 
-    " disable auto comments for all file types
-    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-    
     " ruby standard 2 spaces, always
     autocmd BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2 
     autocmd BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2 
