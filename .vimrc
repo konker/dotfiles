@@ -107,7 +107,7 @@ if has("gui_gtk2")
 elseif has("gui_macvim")
     set guifont=Inconsolata-dz\ for\ Powerline:h13
 elseif has("gui_win32")
-     set guifont=Inconsolata:h12
+    set guifont=Inconsolata-dz\ for\ Powerline:h12
 end
 
 
@@ -115,7 +115,7 @@ end
 " ============================================================================ 
 set nowritebackup
 set nobackup
-set directory=/tmp// " prepend(^=) $HOME/.tmp/ to default path; use full path as backup filename(//)
+set directory=/tmp//,$HOME/.tmp// " prepend(^=) $HOME/.tmp/ to default path; use full path as backup filename(//)
 set hidden
 
 " Behaviour
