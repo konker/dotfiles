@@ -30,6 +30,7 @@ Bundle 'Python-Syntax'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'pangloss/vim-javascript'
 Bundle 'leshill/vim-json'
+Bundle 'mv/mv-vim-puppet'
 
 
 " plugin configs
