@@ -30,6 +30,7 @@ Bundle 'Python-Syntax'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'pangloss/vim-javascript'
 Bundle 'leshill/vim-json'
+Bundle 'mv/mv-vim-puppet'
 
 
 " plugin configs
@@ -54,6 +55,7 @@ set wrap
 set textwidth=0
 set tildeop
 
+set formatoptions-=c
 set formatoptions-=o " Do not automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
 set formatoptions-=r " Do not automatically insert a comment leader after an enter
 set formatoptions-=t " Do no auto-wrap text using textwidth (does not apply to comments)
@@ -75,7 +77,13 @@ endif
 " Colour and UI
 " ============================================================================ 
 set background=dark
-colorscheme jellybeans
+
+try
+    colorscheme jellybeans
+catch /./
+    " ignore
+endtry
+
 set t_Co=256
 set ruler
 set nonumber
@@ -87,8 +95,8 @@ highlight ExtraWhitespace ctermbg=lightgreen guibg=lightgreen
 
 set showmatch  " Show matching brackets.
 set matchtime=2 " How many tenths of a second to blink
-set novisualbell  " No blinking
-set noerrorbells  " No noise.
+" no noise or blinking
+set noerrorbells visualbell t_vb=
 set listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable chars mapping
 
 " gui options
@@ -98,7 +106,7 @@ if has("gui_gtk2")
 elseif has("gui_macvim")
     set guifont=Inconsolata-dz\ for\ Powerline:h13
 elseif has("gui_win32")
-     set guifont=Inconsolata:h12
+    set guifont=Inconsolata-dz\ for\ Powerline:h12
 end
 
 
@@ -106,7 +114,7 @@ end
 " ============================================================================ 
 set nowritebackup
 set nobackup
-set directory=/tmp// " prepend(^=) $HOME/.tmp/ to default path; use full path as backup filename(//)
+set directory=/tmp//,$HOME/.tmp// " prepend(^=) $HOME/.tmp/ to default path; use full path as backup filename(//)
 set hidden
 
 " Behaviour
@@ -119,7 +127,6 @@ set cf                 " Enable error files & error jumping.
 set clipboard+=unnamed " Yanks go on clipboard instead.
 set autowrite          " Writes on make/shell commands
 set timeoutlen=350     " Time to wait for a command (after leader for example)
-set formatoptions=crql
 
 set foldenable " Turn on folding
 set foldmethod=marker " Fold on the marker
@@ -151,9 +158,6 @@ set tags=.tags;/
 " ============================================================================ 
 if has("autocmd")
 
-    " disable auto comments for all file types
-    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-    
     " ruby standard 2 spaces, always
     autocmd BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2 
     autocmd BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2 
