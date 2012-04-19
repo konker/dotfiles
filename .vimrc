@@ -19,7 +19,6 @@ Bundle 'gmarik/vundle'
 
 " ui and commands
 Bundle 'tpope/vim-fugitive'
-Bundle 'gmarik/sudo-gui.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'Solarized'
@@ -31,6 +30,8 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'pangloss/vim-javascript'
 Bundle 'leshill/vim-json'
 Bundle 'mv/mv-vim-puppet'
+Bundle 'haskell.vim'
+Bundle 'indenthaskell.vim'
 
 
 " plugin configs
