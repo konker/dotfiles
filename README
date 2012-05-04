@@ -1,0 +1,20 @@
+Dotfiles and configs
+==============================================================================
+
+- vim
+    - run install_vundler.sh
+    - link .vimrc in $HOME
+    - link .fonts in $HOME (ubuntu)
+    - run vim
+        - run :BundleInstall within vim
+
+- zsh
+    - run clone-ohmyzsh.sh
+    - link .zshrc in $HOME
+
+- other
+    - optionally link .screenrc in $HOME
+    - optionally link .tmux.conf in $HOME
+
+- git
+    - .gitconfig, just for me!
