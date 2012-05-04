@@ -166,5 +166,10 @@ if has("autocmd")
     " pythonm fold on indent
     autocmd BufRead,BufNewFile *.py set foldmethod=indent
 
+    " python run pylint
+    autocmd FileType python set makeprg=pylint\ --include-ids=y\ --reports=n\ --output-format=parseable\ %:p
+    autocmd FileType python set errorformat=%f:%l:\ %m
+    autocmd BufWritePost *.py make
+
 endif " has("autocmd")
 
