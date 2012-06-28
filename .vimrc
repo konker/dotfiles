@@ -32,6 +32,7 @@ Bundle 'leshill/vim-json'
 Bundle 'mv/mv-vim-puppet'
 Bundle 'haskell.vim'
 Bundle 'indenthaskell.vim'
+Bundle 'tpope/vim-cucumber'
 
 
 " plugin configs
@@ -103,7 +104,7 @@ set listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable char
 " gui options
 set guioptions-=T 
 if has("gui_gtk2")
-     set guifont=Inconsolata\ 12
+    set guifont=Inconsolata-dz\ for\ Powerline:h13
 elseif has("gui_macvim")
     set guifont=Inconsolata-dz\ for\ Powerline:h13
 elseif has("gui_win32")
@@ -158,6 +159,12 @@ set tags=.tags;/
 " Autocmd
 " ============================================================================ 
 if has("autocmd")
+
+    " force formatoptions
+    autocmd BufRead,BufNewFile * set formatoptions-=c
+    autocmd BufRead,BufNewFile * set formatoptions-=o
+    autocmd BufRead,BufNewFile * set formatoptions-=r
+    autocmd BufRead,BufNewFile * set formatoptions-=t
 
     " ruby standard 2 spaces, always
     autocmd BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2 
