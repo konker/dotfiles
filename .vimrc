@@ -167,8 +167,8 @@ if has("autocmd")
     autocmd BufRead,BufNewFile * set formatoptions-=t
 
     " ruby standard 2 spaces, always
-    autocmd BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2 
-    autocmd BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2 
+    autocmd BufRead,BufNewFile *.rb,*.rhtml,*.feature set shiftwidth=2 
+    autocmd BufRead,BufNewFile *.rb,*.rhtml,*.feature set softtabstop=2 
     
     " pythonm fold on indent
     autocmd BufRead,BufNewFile *.py set foldmethod=indent
