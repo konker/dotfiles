@@ -33,6 +33,7 @@ Bundle 'mv/mv-vim-puppet'
 Bundle 'haskell.vim'
 Bundle 'indenthaskell.vim'
 Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-haml'
 
 
 " plugin configs
