@@ -34,6 +34,7 @@ Bundle 'haskell.vim'
 Bundle 'indenthaskell.vim'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
 
 
 " plugin configs
