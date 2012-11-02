@@ -37,7 +37,7 @@ export PATH=$PATH:~/WORKING/android/android-sdk/platform-tools
 export PATH=/usr/local/bin:$PATH
 
 export EDITOR=vi
-export PYTHONPATH=$PYTHONPATH:/Users/konker/WORKING/fusion/peerscape/v3/:/Users/konker/WORKING/fusion/peerscape/v3/extras/
+export PYTHONPATH=$PYTHONPATH:~/WORKING/fusion/peerscape/v3/:~/WORKING/fusion/peerscape/v3/extras/
 
 alias cls=clear
 
