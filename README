@@ -15,6 +15,8 @@ Dotfiles and configs
 - other
     - optionally link .screenrc in $HOME
     - optionally link .tmux.conf in $HOME
+    - optionally link .gemrc in $HOME
+    - optionally link .profile in $HOME
 
 - git
     - .gitconfig, just for me!
