@@ -7,10 +7,12 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="fino"
 ZSH_THEME="steeef"
+#ZSH_THEME="agnoster"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias lsusb="system_profiler SPUSBDataType"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -36,3 +38,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 source ~/.profile
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+

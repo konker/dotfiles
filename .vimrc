@@ -32,6 +32,9 @@ Bundle 'leshill/vim-json'
 Bundle 'mv/mv-vim-puppet'
 Bundle 'haskell.vim'
 Bundle 'indenthaskell.vim'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
 
 
 " plugin configs
@@ -90,10 +93,6 @@ set ruler
 set nonumber
 set laststatus=2
 
-" highlight trailing whitespace
-highlight Visual guibg=Grey
-highlight ExtraWhitespace ctermbg=lightgreen guibg=lightgreen
-
 set showmatch  " Show matching brackets.
 set matchtime=2 " How many tenths of a second to blink
 " no noise or blinking
@@ -103,12 +102,28 @@ set listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable char
 " gui options
 set guioptions-=T 
 if has("gui_gtk2")
-     set guifont=Inconsolata\ 12
-elseif has("gui_macvim")
     set guifont=Inconsolata-dz\ for\ Powerline:h13
+elseif has("gui_macvim")
+     set guifont=Inconsolata-dz\ for\ Powerline:h14
 elseif has("gui_win32")
     set guifont=Inconsolata-dz\ for\ Powerline:h12
 end
+
+" highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen   
+
+" Show trailing whitespace:
+match ExtraWhitespace /\s\+$/
+
+" Show tabs:
+match ExtraWhitespace /\t+/
+
+"""highlight ExtraWhitespace ctermbg=red guibg=red
+"""match ExtraWhitespace /\s\+$/
+"""autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+"""autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"""autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"""autocmd BufWinLeave * call clearmatches()
 
 
 " Backups
@@ -125,7 +140,9 @@ set autoread           " Automatically reload changes if detected
 set wildmenu           " Turn on WiLd menu
 set history=768        " Number of things to remember in history.
 set cf                 " Enable error files & error jumping.
-set clipboard+=unnamed " Yanks go on clipboard instead.
+if $TMUX == ''
+  set clipboard+=unnamed " Yanks go on clipboard instead.
+endif
 set autowrite          " Writes on make/shell commands
 set timeoutlen=350     " Time to wait for a command (after leader for example)
 
@@ -159,17 +176,23 @@ set tags=.tags;/
 " ============================================================================ 
 if has("autocmd")
 
+    " force formatoptions
+    autocmd BufRead,BufNewFile * set formatoptions-=c
+    autocmd BufRead,BufNewFile * set formatoptions-=o
+    autocmd BufRead,BufNewFile * set formatoptions-=r
+    autocmd BufRead,BufNewFile * set formatoptions-=t
+
     " ruby standard 2 spaces, always
-    autocmd BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2 
-    autocmd BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2 
+    autocmd BufRead,BufNewFile *.rb,*.rhtml,*.feature set shiftwidth=2 
+    autocmd BufRead,BufNewFile *.rb,*.rhtml,*.feature set softtabstop=2 
     
     " pythonm fold on indent
     autocmd BufRead,BufNewFile *.py set foldmethod=indent
 
     " python run pylint
-    autocmd FileType python set makeprg=pylint\ --include-ids=y\ --reports=n\ --output-format=parseable\ %:p
-    autocmd FileType python set errorformat=%f:%l:\ %m
-    autocmd BufWritePost *.py make
+    "autocmd FileType python set makeprg=pylint\ --include-ids=y\ --reports=n\ --output-format=parseable\ %:p
+    "autocmd FileType python set errorformat=%f:%l:\ %m
+    "autocmd BufWritePost *.py make
 
 endif " has("autocmd")
 
