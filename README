@@ -7,7 +7,8 @@ Dotfiles and configs
     - link .fonts in $HOME (ubuntu)
     - run vim
         - run :BundleInstall within vim
-
+    - create .vim/colors
+        - link jellybeans.vim in .vim/colors
 - zsh
     - run clone-ohmyzsh.sh
     - link .zshrc in $HOME

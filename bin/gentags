@@ -1,5 +1,6 @@
 #!/bin/bash
 
+CTAGS_EXEC=/usr/local/bin/ctags
 f=.tags
 path=$(pwd)
 
@@ -8,7 +9,7 @@ path=$(pwd)
 while getopts ":n" opt; do
     case $opt in
         n)
-            ctags -R --file-scope=no -f $f *
+            $CTAGS_EXEC -R --file-scope=no -f $f *
             exit 0
             ;;
         \?)
@@ -23,7 +24,7 @@ done
 while [[ 1 ]]; do
     if [[ "$path" != "" && -e "$path/$f" ]]; then
         #echo "$path/$f"
-        ctags -R --file-scope=no -f $path/$f $path/*
+        $CTAGS_EXEC -R --file-scope=no -f $path/$f $path/*
         exit 0
     elif [[ "$path" == "" ]]; then
         exit 1

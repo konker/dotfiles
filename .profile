@@ -21,17 +21,19 @@ export AWS_ELB_HOME=~/bin/ElasticLoadBalancing-1.0.11.1
 export PATH=$PATH:$AWS_ELB_HOME/bin
 
 # JAVA
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
+#export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 
 # mysql
 export PATH=/usr/local/mysql/bin:$PATH
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 
 # nodejs
 export PATH=$HOME/local/node/bin:$PATH
 
 # android
-export PATH=$PATH:~/WORKING/android/android-sdk/tools
-export PATH=$PATH:~/WORKING/android/android-sdk/platform-tools
+export PATH=$PATH:~/SDK/android/tools
+export PATH=$PATH:~/SDK/android/platform-tools
+export PATH=$PATH:~/SDK/android-ndk-r8d
 
 # homebrew
 export PATH=/usr/local/bin:$PATH
@@ -59,3 +61,16 @@ svn_add_all(){
 # export MAGICK_HOME="/usr/local"
 # export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib"
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+
+export PATH=$PATH:/Users/markus/SDK/TADP/android-sdk-macosx/platform-tools
+
+export PATH=$PATH:/Users/markus/SDK/TADP/android-sdk-macosx/tools
+
+export NDKROOT="/Users/markus/SDK/TADP/android-ndk-r8d"
+
+export ANT_HOME="/Users/markus/SDK/TADP/apache-ant-1.8.2"
+
+export PATH=$PATH:/Users/markus/SDK/TADP/apache-ant-1.8.2/bin

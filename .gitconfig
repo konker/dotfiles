@@ -9,3 +9,5 @@
 	user = konker
 [alias]
 	co = checkout
+[core]
+	editor = /usr/bin/vim
