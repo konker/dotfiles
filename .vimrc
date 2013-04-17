@@ -24,6 +24,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'majutsushi/tagbar'
 Bundle 'sjl/gundo.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'scrooloose/nerdtree'
 
 " languages
 Bundle 'scrooloose/syntastic'
@@ -46,6 +47,9 @@ noremap <Leader>t  :TagbarToggle<CR>
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
+" NERDTree
+noremap <Leader>n  :NERDTreeToggle<CR>
+
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -54,6 +58,7 @@ let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': [] }
+noremap <Leader>c  :SyntasticCheck<CR>
 
 " Automatically detect file types. (must turn on after Vundle)
 filetype plugin indent on
@@ -125,8 +130,8 @@ noremap <Leader>s  :set list!<CR>
 
 
 " highlight listchars
-highlight NonText ctermbg=black ctermfg=darkgray guifg=darkgray guibg=black
-highlight SpecialKey ctermbg=black ctermfg=darkgray guifg=darkgray guibg=black
+highlight NonText ctermfg=white guifg=white
+highlight SpecialKey ctermfg=white guifg=white
 
 " gui options
 set guioptions-=T
