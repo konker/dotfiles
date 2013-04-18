@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CTAGS_EXEC=/usr/local/bin/ctags
+CTAGS_EXEC=/usr/bin/ctags
 f=.tags
 path=$(pwd)
 

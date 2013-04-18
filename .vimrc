@@ -40,7 +40,7 @@ Bundle 'tpope/vim-markdown'
 let g:Powerline_symbols = 'fancy'
 
 " TagBar
-let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+let g:tagbar_ctags_bin = '/usr/bin/ctags'
 nmap <F8> :TagbarToggle<CR>
 noremap <Leader>t  :TagbarToggle<CR>
 
