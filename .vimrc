@@ -1,4 +1,5 @@
 " vimrc file
+
 " Author: Konrad Markus <konker@gmail.com>
 
 
@@ -198,6 +199,12 @@ endif
 " switch on tags and specify tags file.
 " ; at the end means the search will traverse up the directory tree
 set tags=.tags;/
+" }}}
+
+
+" Shortcuts {{{
+" ============================================================================
+noremap <Leader>p  :set paste!<CR>
 " }}}
 
 
