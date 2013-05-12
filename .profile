@@ -57,6 +57,9 @@ svn_add_all(){
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
+export WORKON_HOME=~/ENVS
+[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && . "/usr/local/bin/virtualenvwrapper.sh"  # This loads python virtualenvwrapper into a shell session.
+
 # ImageMagick crap (remove for macports install to work)
 # export MAGICK_HOME="/usr/local"
 # export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib"

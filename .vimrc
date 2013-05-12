@@ -26,12 +26,14 @@ Bundle 'majutsushi/tagbar'
 Bundle 'sjl/gundo.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'scrooloose/nerdtree'
+Bundle 'kien/ctrlp.vim'
 
 " languages
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
+Bundle 'kchmck/vim-coffee-script'
 
 
 " plugin configs
@@ -41,15 +43,15 @@ let g:Powerline_symbols = 'fancy'
 
 " TagBar
 let g:tagbar_ctags_bin = '/usr/bin/ctags'
-nmap <F8> :TagbarToggle<CR>
-noremap <Leader>t  :TagbarToggle<CR>
+noremap <F8> :TagbarToggle<CR>
+nnoremap <Leader>t  :TagbarToggle<CR>
 
 " IndentGuides
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
 " NERDTree
-noremap <Leader>n  :NERDTreeToggle<CR>
+nnoremap <Leader>n  :NERDTreeToggle<CR>
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -59,7 +61,15 @@ let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': [] }
-noremap <Leader>c  :SyntasticCheck<CR>
+nnoremap <Leader>c  :SyntasticCheck<CR>
+
+" Gundo
+nnoremap <Leader>u  :GundoToggle<CR>
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 
 " Automatically detect file types. (must turn on after Vundle)
 filetype plugin indent on
@@ -126,8 +136,8 @@ set matchtime=2 " How many tenths of a second to blink
 set noerrorbells visualbell t_vb=
 set listchars=tab:→\ ,trail:·,extends:»,precedes:« " Unprintable chars mapping
 set list
-nmap <F7> :set list!<CR>
-noremap <Leader>s  :set list!<CR>
+noremap <F7> :set list!<CR>
+nnoremap <Leader>s  :set list!<CR>
 
 
 " highlight listchars
@@ -228,6 +238,15 @@ if has("autocmd")
 
     " python fold on indent
     autocmd BufRead,BufNewFile *.py set foldmethod=indent
+
+    " coffeescript 2 spaces and fold on indent
+    autocmd BufRead,BufNewFile *.coffee,*.rhtml,*.feature set shiftwidth=2
+    autocmd BufRead,BufNewFile *.coffee,*.rhtml,*.feature set softtabstop=2
+    au BufNewFile,BufReadPost *.coffee setl foldmethod=indent
+
+    " android
+    autocmd BufEnter * if filereadable("AndroidManifest.xml") | set makeprg=ant\ debug | endif
+    autocmd BufEnter * if expand("%:p:h") =~ '/jni' | set makeprg=ndk-build | endif
 
 endif " has("autocmd")
 " }}}
