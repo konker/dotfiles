@@ -35,6 +35,12 @@ export PATH=$PATH:~/SDK/android/tools
 export PATH=$PATH:~/SDK/android/platform-tools
 export PATH=$PATH:~/SDK/android-ndk-r8d
 
+# android ndk
+export NDK_ROOT="~/SDK/android-ndk-r8d"
+
+# OpenCV android
+export OPENCV_ROOT="~/SDK/OpenCV-android-sdk"
+
 # homebrew
 export PATH=/usr/local/bin:$PATH
 
@@ -68,12 +74,3 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 
-export PATH=$PATH:/Users/markus/SDK/TADP/android-sdk-macosx/platform-tools
-
-export PATH=$PATH:/Users/markus/SDK/TADP/android-sdk-macosx/tools
-
-export NDKROOT="/Users/markus/SDK/TADP/android-ndk-r8d"
-
-export ANT_HOME="/Users/markus/SDK/TADP/apache-ant-1.8.2"
-
-export PATH=$PATH:/Users/markus/SDK/TADP/apache-ant-1.8.2/bin
