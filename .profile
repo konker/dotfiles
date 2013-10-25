@@ -36,6 +36,12 @@ export PATH=$PATH:~/SDK/android/platform-tools
 export PATH=$PATH:~/SDK/android-ndk
 export USE_CCACHE=1
 
+# android ndk
+export NDK_ROOT="~/SDK/android-ndk-r8d"
+
+# OpenCV android
+export OPENCV_ROOT="~/SDK/OpenCV-android-sdk"
+
 # homebrew
 export PATH=/usr/local/bin:$PATH
 
@@ -60,4 +66,4 @@ export WORKON_HOME=~/ENVS
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
+#[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
