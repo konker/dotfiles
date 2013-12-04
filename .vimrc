@@ -34,6 +34,7 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'othree/html5.vim'
 
 
 " plugin configs
@@ -70,6 +71,7 @@ nnoremap <Leader>u  :GundoToggle<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+
 
 " Automatically detect file types. (must turn on after Vundle)
 filetype plugin indent on
