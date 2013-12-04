@@ -30,6 +30,9 @@ export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 # nodejs
 export PATH=$HOME/local/node/bin:$PATH
 
+# npm
+export PATH=$PATH:/usr/local/share/npm/bin
+
 # android
 export PATH=$PATH:~/SDK/android/tools
 export PATH=$PATH:~/SDK/android/platform-tools
@@ -66,4 +69,4 @@ export WORKON_HOME=~/ENVS
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-#[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
+[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
