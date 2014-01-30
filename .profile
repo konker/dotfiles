@@ -1,8 +1,7 @@
-export PATH=$PATH:$HOME/bin
-export PATH=$PATH:/Applications:~/bin
+export PATH=$PATH:~/bin
 
 # git
-export PATH=$PATH:/usr/local/git/bin
+#export PATH=$PATH:/usr/local/git/bin
 
 # postgresql
 export PATH=$PATH:/usr/local/pgsql/bin
@@ -34,23 +33,26 @@ export PATH=$HOME/local/node/bin:$PATH
 export PATH=$PATH:/usr/local/share/npm/bin
 
 # android
-export PATH=$PATH:~/SDK/android/tools
-export PATH=$PATH:~/SDK/android/platform-tools
+export PATH=$PATH:~/SDK/android-sdk/tools
+export PATH=$PATH:~/SDK/android-sdk/platform-tools
 export PATH=$PATH:~/SDK/android-ndk
 export USE_CCACHE=1
 
 # android ndk
-export NDK_ROOT="~/SDK/android-ndk-r8d"
+export NDK_ROOT="~/SDK/android-ndk"
 
 # OpenCV android
 export OPENCV_ROOT="~/SDK/OpenCV-android-sdk"
 
 # homebrew
-export PATH=/usr/local/bin:$PATH
+#export PATH=/usr/local/bin:$PATH
 
 export EDITOR=vi
+
+# Python
 #export PYTHONPATH=$PYTHONPATH:~/WORKING/fusion/peerscape/v3/:~/WORKING/fusion/peerscape/v3/extras/
-export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages
+export WORKON_HOME=~/ENVS
+#[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && . "/usr/local/bin/virtualenvwrapper.sh"  # This loads python virtualenvwrapper into a shell session.
 
 alias cls=clear
 
@@ -59,14 +61,8 @@ export LSCOLORS=exfxcxdxbxegedabagacad
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
-export WORKON_HOME=~/ENVS
-[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && . "/usr/local/bin/virtualenvwrapper.sh"  # This loads python virtualenvwrapper into a shell session.
-
-# ImageMagick crap (remove for macports install to work)
-# export MAGICK_HOME="/usr/local"
-# export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib"
-
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
+
