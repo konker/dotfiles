@@ -27,6 +27,7 @@ Bundle 'sjl/gundo.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
+Bundle 'ciaranm/detectindent'
 
 " languages
 Bundle 'scrooloose/syntastic'
@@ -50,6 +51,14 @@ nnoremap <Leader>t  :TagbarToggle<CR>
 " IndentGuides
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+
+" DetectIndent
+" To prefer 'expandtab' to 'noexpandtab' when no detection is possible:
+:let g:detectindent_preferred_expandtab = 1
+
+" To specify a preferred indent level when no detection is possible:
+:let g:detectindent_preferred_indent = 4
+
 
 " NERDTree
 nnoremap <Leader>n  :NERDTreeToggle<CR>
@@ -174,7 +183,7 @@ set wildmenu           " Turn on WiLd menu
 set history=768        " Number of things to remember in history.
 set cf                 " Enable error files & error jumping.
 if $TMUX == ''
-  set clipboard+=unnamed " Yanks go on clipboard instead.
+  set clipboard+=unnamedplus " Yanks go on clipboard instead.
 endif
 set autowrite          " Writes on make/shell commands
 set timeoutlen=350     " Time to wait for a command (after leader for example)
@@ -245,6 +254,9 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.coffee,*.rhtml,*.feature set shiftwidth=2
     autocmd BufRead,BufNewFile *.coffee,*.rhtml,*.feature set softtabstop=2
     au BufNewFile,BufReadPost *.coffee setl foldmethod=indent
+
+    " detect indent style
+    :autocmd BufReadPost * :DetectIndent
 
     " android
     autocmd BufEnter * if filereadable("AndroidManifest.xml") | set makeprg=ant\ debug | endif
