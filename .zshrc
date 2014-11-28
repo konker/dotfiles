@@ -1,3 +1,15 @@
+# set the trace prompt to include seconds, nanoseconds, script name and line number
+## PS4='+$(date "+%s:%N") %N:%i> '
+# save file stderr to file descriptor 3 and redirect stderr (including trace 
+# output) to a file with the script's PID as an extension
+## exec 3>&2 2>/tmp/startlog.$$
+# set options to turn on tracing and expansion of commands contained in the prompt
+## setopt xtrace prompt_subst
+
+
+
+DISABLE_AUTO_UPDATE="true"
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -12,7 +24,7 @@ ZSH_THEME="steeef"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias lsusb="system_profiler SPUSBDataType"
+# alias lsusb="system_profiler SPUSBDataType"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -32,7 +44,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git rvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,3 +56,8 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# turn off tracing
+## unsetopt xtrace
+# restore stderr to the value saved in FD 3
+## exec 2>&3 3>&-

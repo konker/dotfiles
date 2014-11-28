@@ -21,13 +21,21 @@ Bundle 'gmarik/vundle'
 " ui and commands
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Bundle 'Lokaltog/vim-powerline'
+Plugin 'bling/vim-airline'
 Bundle 'majutsushi/tagbar'
 Bundle 'sjl/gundo.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
 Bundle 'ciaranm/detectindent'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'kshenoy/vim-signature'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'Shougo/vimshell.vim'
+Bundle 'Shougo/unite.vim'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'vim-scripts/bufkill.vim'
 
 " languages
 Bundle 'scrooloose/syntastic'
@@ -36,10 +44,17 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'othree/html5.vim'
+Bundle 'kovisoft/slimv'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'klen/python-mode'
+Bundle 'chrisbra/csv.vim'
 
 
-" plugin configs
+" Plugin configs {{{
 " ----------------------------------------------------------------------------
+" Airline
+let g:airline_powerline_fonts = 1
+
 " Powerline
 let g:Powerline_symbols = 'fancy'
 
@@ -76,11 +91,29 @@ nnoremap <Leader>c  :SyntasticCheck<CR>
 " Gundo
 nnoremap <Leader>u  :GundoToggle<CR>
 
-" CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+" VimShell
+let g:vimshell_right_prompt='getcwd()'
+nnoremap <leader>c :VimShell -split<CR>
+nnoremap <leader>cc :VimShell -split<CR>
+nnoremap <leader>cn :VimShellInteractive node<CR>
+nnoremap <leader>cl :VimShellInteractive lua<CR>
+nnoremap <leader>cr :VimShellInteractive irb<CR>
+nnoremap <leader>cp :VimShellInteractive python<CR>
 
+" Unite
+
+let g:unite_data_directory='~/.vim/unite//'
+nnoremap <C-p> :Unite file_rec/async<CR>
+nnoremap <space>/ :Unite grep:.<CR>
+nnoremap <space>s :Unite -quick-match buffer<CR>
+
+" Slimv
+let g:slimv_impl = 'mit'
+let g:scheme_builtin_swank = 1
+let g:slimv_repl_split = 4
+""let g:slimv_swank_cmd = '! xterm -e sbcl --load /usr/share/common-lisp/source/slime/start-swank.lisp &'
+""let g:slimv_swank_clojure = '! xterm -e lein swank &'
+""let g:slimv_swank_cmd = '! xterm -e mit-scheme-x86-64 --eval "(let loop () (start-swank) (loop))" &'
 
 " Automatically detect file types. (must turn on after Vundle)
 filetype plugin indent on
@@ -150,10 +183,12 @@ set list
 noremap <F7> :set list!<CR>
 nnoremap <Leader>s  :set list!<CR>
 
-
 " highlight listchars
 highlight NonText ctermfg=white guifg=white
 highlight SpecialKey ctermfg=white guifg=white
+
+" highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=Brown
 
 " gui options
 set guioptions-=T
@@ -173,6 +208,22 @@ set nowritebackup
 set nobackup
 set directory=/tmp//,$HOME/.tmp// " prepend(^=) $HOME/.tmp/ to default path; use full path as backup filename(//)
 set hidden
+" }}}
+
+
+" Undo persistence {{{
+" ============================================================================
+if exists("+undofile")
+    " undofile - This allows you to use undos after exiting and restarting
+    " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
+    " :help undo-persistence
+    " This is only present in 7.3+
+    if isdirectory($HOME . '/.vim/undo') == 0
+        :silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+    endif
+    set undodir=~/.vim/undo//
+    set undofile
+endif
 " }}}
 
 
@@ -197,6 +248,18 @@ set foldopen=block,hor,mark,percent,quickfix,tag " what movements open folds
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 " }}}
+
+" Auto center {{{
+" ============================================================================
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+nnoremap <silent> g# g#zz
+nnoremap <silent> <C-o> <C-o>zz
+nnoremap <silent> <C-i> <C-i>zz
+"}}}
 
 
 " Search {{{
@@ -223,21 +286,59 @@ set tags=.tags;/
 " }}}
 
 
-" Shortcuts {{{
+" Shortcuts and keymappings {{{
 " ============================================================================
-noremap <Leader>p  :set paste!<CR>
+nnoremap <Leader>p  :set paste!<CR>
+
+" call make and toggle quickfix window
+nnoremap <F9> :make!<CR>
+
+" disable arrow keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+
+" remap arrow keys
+nnoremap <left> :bprev<CR>
+nnoremap <right> :bnext<CR>
+nnoremap <up> :cnext<CR>
+nnoremap <down> :cprev<CR>
+
+" allow cursor movement in insert mode
+imap <C-h> <C-o>h
+imap <C-j> <C-o>j
+imap <C-k> <C-o>k
+imap <C-l> <C-o>l
 " }}}
 
 
 " Autocmd {{{
 " ============================================================================
 if has("autocmd")
+    " don't highlight trailing whitespace in insert mode
+    autocmd ColorScheme * highlight ExtraWhitespace guibg=red
+    autocmd BufEnter * match ExtraWhitespace /\S\zs\s\+$/
+    autocmd InsertEnter * match ExtraWhitespace /\S\zs\s\+\%#\@<!$/
+    autocmd InsertLeave * match ExtraWhiteSpace /\S\zs\s\+$/
 
     " force formatoptions
     autocmd BufRead,BufNewFile * set formatoptions-=c
     autocmd BufRead,BufNewFile * set formatoptions-=o
     autocmd BufRead,BufNewFile * set formatoptions-=r
     autocmd BufRead,BufNewFile * set formatoptions-=t
+
+    " Automatically open, but do not go to (if there are errors) the quickfix /
+    " location list window, or close it when is has become empty.
+    "
+    " Note: Must allow nesting of autocmds to enable any customizations for quickfix
+    " buffers.
+    " Note: Normally, :cwindow jumps to the quickfix window if the command opens it
+    " (but not if it's already open). However, as part of the autocmd, this doesn't
+    " seem to happen.
+    autocmd QuickFixCmdPost [^l]* nested botright cwindow
+    autocmd QuickFixCmdPost    l* nested lwindow
 
     " ruby standard 2 spaces, always
     autocmd BufRead,BufNewFile *.rb,*.rhtml,*.feature set shiftwidth=2
@@ -253,10 +354,17 @@ if has("autocmd")
     " coffeescript 2 spaces and fold on indent
     autocmd BufRead,BufNewFile *.coffee,*.rhtml,*.feature set shiftwidth=2
     autocmd BufRead,BufNewFile *.coffee,*.rhtml,*.feature set softtabstop=2
-    au BufNewFile,BufReadPost *.coffee setl foldmethod=indent
+    autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent
+
+    " disable paste when leaving insert mode
+    autocmd InsertLeave * set nopaste
 
     " detect indent style
     :autocmd BufReadPost * :DetectIndent
+
+    " java
+    autocmd BufNewFile,BufReadPost *.java set makeprg=mvn\ package\ -q
+    autocmd BufNewFile,BufReadPost *.java set errorformat=[ERROR]\ %f:[%l%.%c]%m
 
     " android
     autocmd BufEnter * if filereadable("AndroidManifest.xml") | set makeprg=ant\ debug | endif

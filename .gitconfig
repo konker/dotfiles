@@ -1,5 +1,5 @@
 [user]
-	name = konker
+	name = Konrad Markus
 	email = konker@luxvelocitas.com
 [color]
 	status = true
@@ -11,3 +11,7 @@
 	co = checkout
 [core]
 	editor = /usr/bin/vim
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 489x221+179+27
+	history-view-vpane-position = 454

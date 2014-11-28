@@ -66,3 +66,5 @@ export LC_ALL=en_US.UTF-8
 
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
