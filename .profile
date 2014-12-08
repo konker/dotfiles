@@ -33,6 +33,9 @@ export PATH=$HOME/local/node/bin:$PATH
 export PATH=$PATH:/usr/local/share/npm/bin
 
 # android
+export ANDROID_HOME=~/SDK/android-sdk
+export ANDROID_SDK=~/SDK/android-sdk
+export PATH=$PATH:~/SDK/android-sdk/tools
 export PATH=$PATH:~/SDK/android-sdk/tools
 export PATH=$PATH:~/SDK/android-sdk/platform-tools
 export PATH=$PATH:~/SDK/android-ndk
@@ -52,19 +55,21 @@ export EDITOR=vi
 # Python
 #export PYTHONPATH=$PYTHONPATH:~/WORKING/fusion/peerscape/v3/:~/WORKING/fusion/peerscape/v3/extras/
 export WORKON_HOME=~/ENVS
-#[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && . "/usr/local/bin/virtualenvwrapper.sh"  # This loads python virtualenvwrapper into a shell session.
+[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && . "/usr/local/bin/virtualenvwrapper.sh"  # This loads python virtualenvwrapper into a shell session.
 
 alias cls=clear
+alias xop=xdg-open
 
 export CLICOLOR=1
 export LSCOLORS=exfxcxdxbxegedabagacad
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
-
+# nvm
+export NVM_DIR=$HOME/.nvm
+[ -s $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh # This loads NVM
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+source  $HOME/.rvm/scripts/rvm
+
