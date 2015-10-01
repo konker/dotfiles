@@ -39,15 +39,16 @@ Bundle 'vim-scripts/bufkill.vim'
 
 " languages
 Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'othree/html5.vim'
 Bundle 'kovisoft/slimv'
 Bundle 'leafgarland/typescript-vim'
-Bundle 'klen/python-mode'
-Bundle 'chrisbra/csv.vim'
+"Bundle 'tpope/vim-cucumber'
+"Bundle 'tpope/vim-haml'
+"Bundle 'klen/python-mode'
+"Bundle 'chrisbra/csv.vim'
+Bundle 'tfnico/vim-gradle'
 
 
 " Plugin configs {{{
