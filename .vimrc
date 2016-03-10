@@ -21,34 +21,34 @@ Bundle 'gmarik/vundle'
 " ui and commands
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tpope/vim-fugitive'
-"Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-"Bundle 'Lokaltog/vim-powerline'
-Plugin 'bling/vim-airline'
+Bundle 'bling/vim-airline'
 Bundle 'majutsushi/tagbar'
 Bundle 'sjl/gundo.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'scrooloose/nerdtree'
+Bundle 'Yggdroot/indentLine'
 Bundle 'ciaranm/detectindent'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'kshenoy/vim-signature'
-Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/vimshell.vim'
-Bundle 'Shougo/unite.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'vim-scripts/bufkill.vim'
+"Bundle 'kshenoy/vim-signature'
+"Bundle 'Shougo/unite.vim'
+"Bundle 'Shougo/vimproc.vim'
+"Bundle 'Valloric/YouCompleteMe'
+"Bundle 'scrooloose/nerdtree'
+"Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Bundle 'Lokaltog/vim-powerline'
 
 " languages
-Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-markdown'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'othree/html5.vim'
 Bundle 'kovisoft/slimv'
 Bundle 'leafgarland/typescript-vim'
+Bundle 'tfnico/vim-gradle'
+"Bundle 'scrooloose/syntastic'
 "Bundle 'tpope/vim-cucumber'
 "Bundle 'tpope/vim-haml'
 "Bundle 'klen/python-mode'
 "Bundle 'chrisbra/csv.vim'
-Bundle 'tfnico/vim-gradle'
 
 
 " Plugin configs {{{
@@ -67,6 +67,11 @@ nnoremap <Leader>t  :TagbarToggle<CR>
 " IndentGuides
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+
+" IndentLines
+let g:indentLine_char = '│'
+let g:indentLine_color_term = 239
 
 " DetectIndent
 " To prefer 'expandtab' to 'noexpandtab' when no detection is possible:
@@ -77,17 +82,17 @@ let g:indent_guides_guide_size = 1
 
 
 " NERDTree
-nnoremap <Leader>n  :NERDTreeToggle<CR>
+"nnoremap <Leader>n  :NERDTreeToggle<CR>
 
 " Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': [] }
-nnoremap <Leader>c  :SyntasticCheck<CR>
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_error_symbol = '✗'
+"let g:syntastic_warning_symbol = '⚠'
+"let g:syntastic_mode_map = { 'mode': 'passive',
+                           "\ 'active_filetypes': [],
+                           "\ 'passive_filetypes': [] }
+"nnoremap <Leader>c  :SyntasticCheck<CR>
 
 " Gundo
 nnoremap <Leader>u  :GundoToggle<CR>
@@ -102,11 +107,10 @@ nnoremap <leader>cr :VimShellInteractive irb<CR>
 nnoremap <leader>cp :VimShellInteractive python<CR>
 
 " Unite
-
-let g:unite_data_directory='~/.vim/unite//'
-nnoremap <C-p> :Unite file_rec/async<CR>
-nnoremap <space>/ :Unite grep:.<CR>
-nnoremap <space>s :Unite -quick-match buffer<CR>
+"let g:unite_data_directory='~/.vim/unite//'
+"nnoremap <C-p> :Unite file_rec/async<CR>
+"nnoremap <space>/ :Unite grep:.<CR>
+"nnoremap <space>s :Unite -quick-match buffer<CR>
 
 " Slimv
 let g:slimv_impl = 'mit'
@@ -234,14 +238,28 @@ set autoread           " Automatically reload changes if detected
 set wildmenu           " Turn on WiLd menu
 set history=768        " Number of things to remember in history.
 set cf                 " Enable error files & error jumping.
+
 if $TMUX == ''
   set clipboard+=unnamedplus " Yanks go on clipboard instead.
 endif
+
+" Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
 set autowrite          " Writes on make/shell commands
 set timeoutlen=350     " Time to wait for a command (after leader for example)
 
 set foldenable " Turn on folding
-set foldmethod=syntax
+set foldmethod=marker
 set foldlevel=100 " Don't autofold anything (but I can still fold manually)
 set foldopen=block,hor,mark,percent,quickfix,tag " what movements open folds
 
