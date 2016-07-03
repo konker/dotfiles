@@ -1,36 +1,15 @@
 export PATH=$PATH:~/bin
 
-# git
-#export PATH=$PATH:/usr/local/git/bin
-
-# postgresql
-export PATH=$PATH:/usr/local/pgsql/bin
-export PGDATA=/usr/local/pgsql/data
-
-# IAM tools
-export AWS_IAM_HOME=~/bin/IAMCli-1.2.0
-export PATH=$PATH:$AWS_IAM_HOME/bin
-
-# EC2 tools
-export EC2_HOME=~/bin/ec2-api-tools-1.4.1.2
-export PATH=$PATH:$EC2_HOME/bin
-
-# ELB tools
-export AWS_ELB_HOME=~/bin/ElasticLoadBalancing-1.0.11.1
-export PATH=$PATH:$AWS_ELB_HOME/bin
-
 # JAVA
-#export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
-
-# mysql
-export PATH=/usr/local/mysql/bin:$PATH
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # nodejs
 export PATH=$HOME/local/node/bin:$PATH
 
 # npm
 export PATH=$PATH:/usr/local/share/npm/bin
+function npm-do { (PATH=$(npm bin):$PATH; eval $@;) }
+
 
 # android
 export ANDROID_HOME=~/SDK/android-sdk
@@ -40,6 +19,9 @@ export PATH=$PATH:~/SDK/android-sdk/tools
 export PATH=$PATH:~/SDK/android-sdk/platform-tools
 export PATH=$PATH:~/SDK/android-ndk
 export USE_CCACHE=1
+
+# gradle
+export GRADLE_HOME=~/bin/gradle-home
 
 # android ndk
 export NDK_ROOT="~/SDK/android-ndk"
@@ -82,8 +64,8 @@ alias iyn="flashgreen ; flashsleep ; flashgreen ; espeak \"Installed your nerdin
 alias tyn="flashgreen ; flashsleep ; flashgreen ; espeak \"Tested, your nerdiness\""
 alias byn="flashred ;   flashsleep ; flashred ;   espeak \"Bugger, your nerdiness\""
 alias tit="printf '$ESCPRE\033]0;%s\a$ESCPOST'"
-alias vim="~/bin/neovim/bin/nvim -u ~/.vimrc"
-alias vi="vim"
+#alias vim="~/WORKING/neovim/build/bin/nvim -u ~/.vimrc"
+#alias vi="vim"
 alias grep="grep --color=auto --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn"
 unset GREP_OPTIONS
 
@@ -102,3 +84,6 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+export NVPACK_ROOT="/home/konker/SDK/TADP"
+
