@@ -39,11 +39,12 @@ Bundle 'vim-scripts/bufkill.vim'
 
 " languages
 Bundle 'tpope/vim-markdown'
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'othree/html5.vim'
-Bundle 'kovisoft/slimv'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'tfnico/vim-gradle'
+Bundle 'derekwyatt/vim-scala'
+"Bundle 'kovisoft/slimv'
+"Bundle 'kchmck/vim-coffee-script'
+"Bundle 'leafgarland/typescript-vim'
+"Bundle 'tfnico/vim-gradle'
 "Bundle 'scrooloose/syntastic'
 "Bundle 'tpope/vim-cucumber'
 "Bundle 'tpope/vim-haml'
@@ -137,6 +138,7 @@ set expandtab
 set wrap
 set textwidth=0
 set tildeop
+set conceallevel=0
 
 set formatoptions-=c
 set formatoptions-=o " Do not automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
