@@ -9,6 +9,7 @@ export PATH=$HOME/local/node/bin:$PATH
 # npm
 export PATH=$PATH:/usr/local/share/npm/bin
 function npm-do { (PATH=$(npm bin):$PATH; eval $@;) }
+function npm-do-p { (PATH=$(cd ..; npm bin):$PATH; eval $@;) }
 
 
 # android
@@ -38,6 +39,10 @@ export EDITOR=vi
 #export PYTHONPATH=$PYTHONPATH:~/WORKING/fusion/peerscape/v3/:~/WORKING/fusion/peerscape/v3/extras/
 export WORKON_HOME=~/ENVS
 [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && . "/usr/local/bin/virtualenvwrapper.sh"  # This loads python virtualenvwrapper into a shell session.
+
+# Change CAPSLOCK into ESC
+xmodmap -e "clear lock" #disable caps lock switch
+#xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 
 ESCPRE="\ePtmux;\e"
 ESCPOST="\e\\"

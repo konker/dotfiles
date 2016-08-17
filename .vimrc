@@ -19,7 +19,8 @@ Bundle 'gmarik/vundle'
 " ----------------------------------------------------------------------------
 
 " ui and commands
-Bundle 'nanotech/jellybeans.vim'
+"Bundle 'nanotech/jellybeans.vim'
+Bundle 'morhetz/gruvbox'
 Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-airline'
 Bundle 'majutsushi/tagbar'
@@ -42,7 +43,8 @@ Bundle 'tpope/vim-markdown'
 Bundle 'othree/html5.vim'
 Bundle 'derekwyatt/vim-scala'
 "Bundle 'kovisoft/slimv'
-"Bundle 'kchmck/vim-coffee-script'
+Bundle 'vim-coffee-script'
+Bundle 'hail2u/vim-css3-syntax'
 "Bundle 'leafgarland/typescript-vim'
 "Bundle 'tfnico/vim-gradle'
 "Bundle 'scrooloose/syntastic'
@@ -167,7 +169,8 @@ syntax enable
 set background=dark
 
 try
-    colorscheme jellybeans
+    "colorscheme jellybeans
+    colorscheme gruvbox
 catch /./
     " ignore
 endtry
@@ -349,6 +352,9 @@ if has("autocmd")
     autocmd BufRead,BufNewFile * set formatoptions-=o
     autocmd BufRead,BufNewFile * set formatoptions-=r
     autocmd BufRead,BufNewFile * set formatoptions-=t
+
+    " Don't flipping hide quotes for JSON/etc
+    autocmd BufEnter * set conceallevel=0
 
     " Automatically open, but do not go to (if there are errors) the quickfix /
     " location list window, or close it when is has become empty.
