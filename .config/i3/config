@@ -41,7 +41,9 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec rofi -show run -font "Source Code Pro 16" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
+bindsym $mod+Tab exec rofi -show window -font "Source Code Pro 16" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
 
 # change focus
 bindsym $mod+j focus left
@@ -122,7 +124,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit;systemctl restart lightdm.service'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -150,29 +152,59 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        #i3bar_command lemonbar
-        #status_command python /home/konker/WORKING/powerline/powerline/bindings/i3/powerline-i3.py
-        i3bar_command i3bar
-#i3bar_command dzen2
-        status_command i3status
-        font pango:"Sauce Code Powerline Light" 10
-        tray_output primary
-        position top
-}
+new_window pixel 2
+new_float pixel 2
 
+bar {
+    i3bar_command i3bar
+    status_command py3status -c $HOME/.config/i3/i3status.conf
+    position top
+    font pango:"Sauce Code Powerline Light" 10
+    font pango:"FontAwesome" 10
+    strip_workspace_numbers yes
+    tray_output primary
+
+    colors {
+        separator #666666
+        statusline #dddddd
+        background $status_bg
+        focused_workspace #7080a9 #7080a9 #ffffff
+        active_workspace #2e343c #2e343c #FFFFFF
+        inactive_workspace $status_bg $status_bg #FFFFFF
+        urgent_workspace #F5A3A3 #F5A3A3 #FFFFFF
+        binding_mode #F5A3A3 #F5A3A3 $status_bg
+    }
+}
 
 # Other key bindings
 bindsym Print exec gnome-screenshot
 
-# Auto start stuff
-exec gnome-settings-daemon
-exec xfce4-power-manager
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec --no-startup-id dropbox start
-exec --no-startup-id "setxkbmap -model pc105 -layout us,fi -option grp:alt_shift_toggle -option caps:escape"
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
+# Sreen brightness controls
+#bindsym XF86MonBrightnessUp exec sudo inc-backlight
+#bindsym XF86MonBrightnessDown exec sudo dec-backlight
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Auto start stuff
+exec --no-startup-id echo "$0: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
+exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
+
+#exec --no-startup-id unity-settings-daemon
+#exec xfce4-power-manager
+exec --no-startup-id "setxkbmap -model pc105 -layout us,fi -option grp:alt_shift_toggle -option caps:escape"
+exec --no-startup-id nm-applet
+exec --no-startup-id redshift
+exec --no-startup-id dropbox start
+exec --no-startup-id blueman-applet
+#exec --no-startup-id volti
 
