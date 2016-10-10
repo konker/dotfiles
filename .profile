@@ -8,7 +8,7 @@ export PATH=$HOME/local/node/bin:$PATH
 
 # npm
 export PATH=$PATH:/usr/local/share/npm/bin
-function npm-do { (PATH=$(npm bin):$PATH; eval $@;) }
+#function npm-do { (PATH=$(npm bin):$PATH; eval $@;) }
 function npm-do-p { (PATH=$(cd ..; npm bin):$PATH; eval $@;) }
 
 
