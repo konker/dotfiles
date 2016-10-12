@@ -61,3 +61,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ## unsetopt xtrace
 # restore stderr to the value saved in FD 3
 ## exec 2>&3 3>&-
+
+export NVM_DIR="/home/konker/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
