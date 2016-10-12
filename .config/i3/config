@@ -150,6 +150,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+bindsym $mod+ctrl+l exec "~/bin/fuzzy-lock.sh"
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -174,5 +176,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id dropbox start
 exec --no-startup-id "setxkbmap -model pc105 -layout us,fi -option grp:alt_shift_toggle -option caps:escape"
+exec xautolock -time 15 -locker '~/bin/fuzzy-lock.sh'
 
 
