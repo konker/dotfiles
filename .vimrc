@@ -374,6 +374,7 @@ if has("autocmd")
     " js 4 spaces
     autocmd BufRead,BufNewFile *.js set shiftwidth=4
     autocmd BufRead,BufNewFile *.js set softtabstop=4
+    autocmd BufEnter *.js set makeprg=npm-do\ eslint\ -f\ unix\ %
 
     " python fold on indent
     autocmd BufRead,BufNewFile *.py set foldmethod=indent
