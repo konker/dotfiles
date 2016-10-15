@@ -9,6 +9,8 @@
 	user = konker
 [alias]
 	co = checkout
+	checkout-pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+
 [core]
 	editor = /usr/bin/vim
 [giggle]

@@ -60,10 +60,16 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym Mod1+Left focus left
+bindsym Mod1+Right focus right
+bindsym Mod1+Down focus down
+bindsym Mod1+Up focus up
+
+# use the cursor keys to cycle through workspaces
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -72,10 +78,10 @@ bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left move container to workspace prev; workspace prev;
+bindsym $mod+Shift+Right move container to workspace next; workspace next;
+#bindsym $mod+Shift+Down move down
+#bindsym $mod+Shift+Up move up
 
 # split in horizontal orientation
 bindsym $mod+h split h
