@@ -1,3 +1,4 @@
 bin/idea*
 bin/android-studio
 bin/studio.sh
+.config/i3/i3status.conf
