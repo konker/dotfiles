@@ -37,7 +37,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #E59847 #E59847 #000066 #2e9ef4   #285577
+client.focused          #ffb964 #ffb964 #000066 #ffb964   #ffb964
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
@@ -166,15 +166,18 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+ctrl+l exec "~/bin/fuzzy-lock.sh"
+bindsym $mod+ctrl+l exec /usr/local/bin/lock --pixelate --text "Screen is locked Your Nerdiness"  -- scrot -z
 
 # finds out, if available)
-new_window pixel 2
+new_window pixel 1
 new_float pixel 2
+
+#gaps inner 6
+#gaps outer 6
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 bar {
-    i3bar_command i3bar
+    i3bar_command i3bar-gaps -t
     status_command py3status -c $HOME/.config/i3/i3status.conf
     position top
     font pango:"Sauce Code Powerline Light" 10
@@ -186,7 +189,7 @@ bar {
         separator #666666
         statusline #dddddd
         background $status_bg
-        focused_workspace #7080a9 #7080a9 #ffffff
+        focused_workspace #ffb964 #ffb964 #000000
         active_workspace #2e343c #2e343c #FFFFFF
         inactive_workspace $status_bg $status_bg #FFFFFF
         urgent_workspace #F5A3A3 #F5A3A3 #FFFFFF
@@ -223,4 +226,4 @@ exec --no-startup-id redshift
 exec --no-startup-id dropbox start
 exec --no-startup-id "setxkbmap -model pc105 -layout us,fi -option grp:alt_shift_toggle -option caps:escape"
 exec --no-startup-id blueman-applet
-exec xautolock -time 15 -locker '~/bin/fuzzy-lock.sh'
+
