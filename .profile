@@ -93,7 +93,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export NVPACK_ROOT="/home/konker/SDK/TADP"
 
-if [[ -n "$TTY" ]] then;
+if [ -n "$TTY" ]
+then
     keychain --eval --agents ssh id_rsa
     source $HOME/.keychain/`/bin/hostname`-sh
 fi
