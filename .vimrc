@@ -34,7 +34,7 @@ Bundle 'vim-scripts/bufkill.vim'
 "Bundle 'Shougo/unite.vim'
 "Bundle 'Shougo/vimproc.vim'
 "Bundle 'Valloric/YouCompleteMe'
-"Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdtree'
 "Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 "Bundle 'Lokaltog/vim-powerline'
 
@@ -85,7 +85,7 @@ let g:indentLine_color_term = 239
 
 
 " NERDTree
-"nnoremap <Leader>n  :NERDTreeToggle<CR>
+nnoremap <Leader>n  :NERDTreeToggle<CR>
 
 " Syntastic
 "let g:syntastic_always_populate_loc_list = 1
@@ -125,6 +125,12 @@ let g:slimv_repl_split = 4
 
 " Automatically detect file types. (must turn on after Vundle)
 filetype plugin indent on
+" }}}
+
+
+" Leader {{{
+" ============================================================================
+let mapleader = " "
 " }}}
 
 
