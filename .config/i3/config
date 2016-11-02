@@ -177,7 +177,7 @@ new_float pixel 2
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 bar {
-    i3bar_command i3bar-gaps -t
+    i3bar_command i3bar
     status_command py3status -c $HOME/.config/i3/i3status.conf
     position top
     font pango:"Sauce Code Powerline Light" 10
