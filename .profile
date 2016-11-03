@@ -58,6 +58,7 @@ BGESC_R="$ESCPRE\033]11;darkred\a$ESCPOST"
 
 alias cls=clear
 alias xop=xdg-open
+alias xcp="xsel --clipboard"
 alias say=espeak
 alias gls="git status"
 alias flashsleep="sleep 0.25"
