@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "\`~/bin/load-aws-profile.pl $@\`"
