@@ -72,7 +72,7 @@ alias byn="flashred ;   flashsleep ; flashred ;   espeak \"Bugger, your nerdines
 alias tit="printf '$ESCPRE\033]0;%s\a$ESCPOST'"
 #alias vim="~/WORKING/neovim/build/bin/nvim -u ~/.vimrc"
 #alias vi="vim"
-alias vim="emacs -nw"
+alias vime="emacs -nw"
 alias grep="grep --color=auto --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn"
 unset GREP_OPTIONS
 
