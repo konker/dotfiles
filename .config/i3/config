@@ -54,16 +54,16 @@ bindsym $mod+d exec rofi -show run -font "Source Code Pro 16" -fg "#505050" -bg 
 bindsym $mod+Tab exec rofi -show window -font "Source Code Pro 16" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+#bindsym $mod+j focus left
+##bindsym $mod+k focus down
+#bindsym $mod+l focus up
+#bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod1+Left focus left
-bindsym Mod1+Right focus right
-bindsym Mod1+Down focus down
-bindsym Mod1+Up focus up
+bindsym Control+$mod+Left focus left
+bindsym Control+$mod+Right focus right
+bindsym Control+$mod+Down focus down
+bindsym Control+$mod+Up focus up
 
 # use the cursor keys to cycle through workspaces
 bindsym $mod+Left workspace prev
