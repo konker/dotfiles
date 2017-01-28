@@ -43,6 +43,11 @@ client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
@@ -180,7 +185,7 @@ bar {
     i3bar_command i3bar
     status_command py3status -c $HOME/.config/i3/i3status.conf
     position top
-    font pango:"Sauce Code Powerline Light" 10
+    font pango:"Source Code Powerline Light" 10
     font pango:"FontAwesome" 10
     strip_workspace_numbers yes
     tray_output primary
@@ -208,8 +213,8 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp exec sudo inc-backlight
 #bindsym XF86MonBrightnessDown exec sudo dec-backlight
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -220,10 +225,12 @@ bindsym XF86AudioPrev exec playerctl previous
 exec --no-startup-id echo "$0: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
 exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
 
+exec --no-startup-id "feh --bg-scale /home/konker/Dropbox/rms/stallman.jpg"
 exec --no-startup-id "setxkbmap -model pc105 -layout us,fi -option grp:alt_shift_toggle -option caps:escape"
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift
 exec --no-startup-id dropbox start
 exec --no-startup-id "setxkbmap -model pc105 -layout us,fi -option grp:alt_shift_toggle -option caps:escape"
-exec --no-startup-id blueman-applet
+#exec --no-startup-id blueman-applet
+exec --no-startup-id xfce4-power-manager
 
