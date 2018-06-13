@@ -9,7 +9,8 @@
 	user = konker
 [alias]
 	co = checkout
-	checkout-pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+	checkout-pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr-$1; git branch; git checkout pr-$1; }; f"
+	newbranch = "branch --sort=-committerdate"
 
 [core]
 	editor = /usr/bin/vim
